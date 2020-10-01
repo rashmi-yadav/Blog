@@ -1,0 +1,13 @@
+button {
+    width: 40%;
+    align-self: center;
+
+}
+
+.container {
+    padding: 2em;
+}
+
+p {
+    cursor: pointer;
+}

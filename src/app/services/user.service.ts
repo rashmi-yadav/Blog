@@ -29,5 +29,18 @@ export class UserService {
   getUsers(): User[] {
     return this.users;
   }
+  userAuthentication(username: string, password: string): boolean {
+    var index = this.users.findIndex((u) => u.userName === username);
+    console.log("index", index);
+    if (index >= 0) {
+      if (this.users[index].password === password) return true;
+      else return false;
+    }
+    return false;
+  }
+  recover(email: string) {
+    var index = this.users.findIndex((u) => u.email === email);
+    return index >= 0 ? true : false;
+  }
   constructor() {}
 }

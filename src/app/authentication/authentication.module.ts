@@ -4,9 +4,11 @@ import { RegisterComponent } from "./register/register.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "../material/material.module";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { LoginComponent } from "./login/login.component";
+import { ForgotPasswordComponent } from "./forgot-password/forgot-password.component";
 
 @NgModule({
-  declarations: [RegisterComponent],
+  declarations: [RegisterComponent, LoginComponent, ForgotPasswordComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -14,6 +16,6 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     ReactiveFormsModule,
     FlexLayoutModule,
   ],
-  exports: [RegisterComponent],
+  exports: [RegisterComponent, LoginComponent, ForgotPasswordComponent],
 })
 export class AuthenticationModule {}

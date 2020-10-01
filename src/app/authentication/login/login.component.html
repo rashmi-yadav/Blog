@@ -1,0 +1,29 @@
+<div class="container">
+    <h1> Sign In </h1>
+    <form [formGroup]="loginForm" (submit)="onLogin()" fxLayout="column">
+        <mat-form-field class="form-field" appearance="fill">
+            <mat-label>User Name</mat-label>
+            <input type="text" matInput formControlName="uname" required />
+            <mat-icon matSuffix>alternate_email</mat-icon>
+            <mat-error *ngIf="loginForm.controls.uname.touched && loginForm.controls.uname.invalid">
+                <span *ngIf="loginForm.controls.uname.errors.required">This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="fill">
+            <mat-label> Password
+            </mat-label>
+            <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+            <mat-error *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+                <span *ngIf="loginForm.controls.password.errors.required">This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="accent" type="submit">Login</button>
+    </form>
+    <p mat-button (click)="forgot=!forgot">Forgot Username/Password</p>
+    <!-- *ngIf="forgot" -->
+    <app-forgot-password *ngIf="forgot"></app-forgot-password>
+</div>

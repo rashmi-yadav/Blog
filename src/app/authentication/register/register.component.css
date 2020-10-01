@@ -1,12 +1,13 @@
-.form-field {
-  width: 20%;
-}
-
 button {
-  width: 10%;
-  margin-left: 3.5em;
+  width: 40%;
+  /* margin-left: 7em; */
+  align-self: center;
 }
 
 .container {
   padding: 2em;
 }
+
+/* mat-form-field {
+  width: 70%
+} */
