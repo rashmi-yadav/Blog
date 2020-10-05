@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>My Blog</h1>
+
+    <a mat-mat-icon-button>
+        <mat-icon>email</mat-icon>
+    </a>
+    <a mat-mat-icon-button>
+        <mat-icon>email</mat-icon>
+    </a>
+    <a mat-mat-icon-button>
+        <mat-icon>email</mat-icon>
+    </a>
+    <a mat-mat-icon-button>
+        <mat-icon>email</mat-icon>
+    </a>
+    <a mat-mat-icon-button>
+        <mat-icon>email</mat-icon>
+    </a>
+    <div class="auth">
+        <a mat-button routerLink="/login" *ngIf="!isAuthenticated">Login</a>
+        <a mat-button routerLink="/register" *ngIf="!isAuthenticated">Signup</a>
+        <button mat-button *ngIf="isAuthenticated" (click)="logout()">Logout</button>
+    </div>
+</div>

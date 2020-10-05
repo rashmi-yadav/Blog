@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     }
     var uname = this.loginForm.get("uname").value;
     var password = this.loginForm.get("password").value;
-    var result = this.userService.userAuthentication(uname, password);
+    var result = this.userService.login(uname, password);
     console.log("Inside Login.component.ts" + result);
     if (!result) {
       this.error = true;

@@ -8,9 +8,11 @@ import { AuthenticationModule } from "./authentication/authentication.module";
 import { LandingPageComponent } from "./landing-page/landing-page.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MaterialModule } from "./material/material.module";
+import { SharedModulesModule } from "./shared-modules/shared-modules.module";
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
-  declarations: [AppComponent, LandingPageComponent],
+  declarations: [AppComponent, LandingPageComponent, PostsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -18,6 +20,7 @@ import { MaterialModule } from "./material/material.module";
     AuthenticationModule,
     FlexLayoutModule,
     MaterialModule,
+    SharedModulesModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

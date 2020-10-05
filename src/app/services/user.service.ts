@@ -1,4 +1,6 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { Subject } from "rxjs";
 
 export interface User {
   id: number;
@@ -13,6 +15,9 @@ export interface User {
   providedIn: "root",
 })
 export class UserService {
+  private isAuthenticated = false;
+  private authStatusListener = new Subject<boolean>();
+
   users: User[] = [
     {
       id: 1,
@@ -22,6 +27,12 @@ export class UserService {
       email: "harry@hogwarts.com",
     },
   ];
+  getIsAuthenticated() {
+    return this.isAuthenticated;
+  }
+  getAuthStatusListner() {
+    return this.authStatusListener.asObservable();
+  }
   registerUser(user: User): boolean {
     this.users.push(user);
     return true;
@@ -29,12 +40,15 @@ export class UserService {
   getUsers(): User[] {
     return this.users;
   }
-  userAuthentication(username: string, password: string): boolean {
+  login(username: string, password: string): boolean {
     var index = this.users.findIndex((u) => u.userName === username);
     console.log("index", index);
     if (index >= 0) {
-      if (this.users[index].password === password) return true;
-      else return false;
+      if (this.users[index].password === password) {
+        this.isAuthenticated = true;
+        this.authStatusListener.next(true);
+        this.router.navigate(["/posts"]);
+      } else return false;
     }
     return false;
   }
@@ -42,5 +56,10 @@ export class UserService {
     var index = this.users.findIndex((u) => u.email === email);
     return index >= 0 ? true : false;
   }
-  constructor() {}
+  logout() {
+    this.isAuthenticated = false;
+    this.authStatusListener.next(false);
+    this.router.navigate(["/"]);
+  }
+  constructor(private router: Router) {}
 }
