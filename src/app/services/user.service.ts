@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subject } from "rxjs";
@@ -33,16 +34,28 @@ export class UserService {
   getAuthStatusListner() {
     return this.authStatusListener.asObservable();
   }
-  registerUser(user: User): boolean {
+  registerUser(user: User) {
     this.users.push(user);
-    return true;
+    this.http.post('http://localhost:3000/register',user).subscribe((msg)=>{
+      console.log(msg);
+      this.router.navigate(['/login']);
+    })
+    // return true;
   }
   getUsers(): User[] {
     return this.users;
   }
   login(username: string, password: string): boolean {
     var index = this.users.findIndex((u) => u.userName === username);
-    console.log("index", index);
+    // console.log("index", index);
+    let user = {
+      username:username,
+      password:password
+    }
+    this.http.post('http://localhost:3000/login',user).subscribe((msg)=>{
+      console.log(msg);
+      this.router.navigate(['/login']);
+    })
     if (index >= 0) {
       if (this.users[index].password === password) {
         this.isAuthenticated = true;
@@ -61,5 +74,5 @@ export class UserService {
     this.authStatusListener.next(false);
     this.router.navigate(["/"]);
   }
-  constructor(private router: Router) {}
+  constructor(private router: Router,private http: HttpClient) {}
 }

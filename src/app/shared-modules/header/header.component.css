@@ -1,5 +1,22 @@
 .container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.container .logo img {
+    height: 50px;
+    width: 50px;
+}
+
+.links {
+    display: flex;
+    justify-content: space-around;
+    /* border: 1px solid #000; */
+    width: 70%;
 }

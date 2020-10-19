@@ -10,6 +10,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { MaterialModule } from "./material/material.module";
 import { SharedModulesModule } from "./shared-modules/shared-modules.module";
 import { PostsComponent } from './posts/posts.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, LandingPageComponent, PostsComponent],
@@ -21,6 +22,7 @@ import { PostsComponent } from './posts/posts.component';
     FlexLayoutModule,
     MaterialModule,
     SharedModulesModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
